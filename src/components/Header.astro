@@ -1,0 +1,20 @@
+---
+import { name } from '../data/siteData.json';
+---
+
+<header class="header">
+  <h1 class="title">{name}</h1>
+</header>
+
+<style lang="scss">
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  .title {
+    padding: rem(16) rem(24);
+    max-width: 100%;
+    width: 100vw;
+  }
+</style>
