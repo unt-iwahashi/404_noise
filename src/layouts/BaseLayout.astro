@@ -1,7 +1,5 @@
 ---
 import Head from '@components/Head.astro';
-import Header from '@components/Header.astro';
-import Footer from '@components/Footer.astro';
 
 import '../styles/_reset.scss';
 import '../styles/_base.scss';
@@ -10,10 +8,22 @@ import '../styles/_base.scss';
 <html lang="ja">
   <Head />
   <body>
-    <Header />
-    <main>
+    <main class="main">
       <slot />
     </main>
-    <Footer />
+    <style>
+      .main {
+        background: url('/assets/images/bg_noise.png');
+        animation: noise 1s steps(10) infinite;
+      }
+      @keyframes noise {
+        from {
+          background-position: 0 0;
+        }
+        to {
+          background-position: 123px 456px;
+        }
+      }
+    </style>
   </body>
 </html>

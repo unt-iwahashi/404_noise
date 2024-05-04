@@ -1,0 +1,86 @@
+<div class="message">
+  <h1 class="js-randomWord" data-text="404:Not Found">404:Not Found</h1>
+  <p class="js-randomWord" data-text="The requested URL was not found on this server.">
+    The requested URL was not found on this server.
+  </p>
+</div>
+
+<style lang="scss">
+  .message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: rem(16);
+    width: 100%;
+    min-height: 100vh;
+    font-family: var(--typo-font-en);
+    color: var(--color-white);
+    opacity: 0;
+    transition: opacity 0.3s $easeOutCubic;
+    &.is-active {
+      opacity: 1;
+    }
+    & > h1,
+    & > p {
+      position: relative;
+      font-size: rem(20);
+      letter-spacing: 3px;
+      z-index: 1;
+      &::before,
+      &::after {
+        display: block;
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0.8;
+      }
+      &::before {
+        animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+        color: #00ff99;
+        z-index: -1;
+      }
+      &::after {
+        animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+        color: #ff00ff;
+        z-index: -2;
+      }
+    }
+    & > h1 {
+      font-size: rem(24);
+    }
+  }
+  @keyframes glitch {
+    0% {
+      transform: translate(0);
+    }
+    20% {
+      transform: translate(-2px, 2px);
+    }
+    40% {
+      transform: translate(-2px, -2px);
+    }
+    60% {
+      transform: translate(2px, 2px);
+    }
+    80% {
+      transform: translate(2px, -2px);
+    }
+    100% {
+      transform: translate(0);
+    }
+  }
+</style>
+
+<script>
+  import { randomWord } from '../../ts/randomWord';
+
+  window.addEventListener('load', () => {
+    const message = document.querySelector('.message');
+    setTimeout(() => {
+      message?.classList.add('is-active');
+      randomWord();
+    }, 500);
+  });
+</script>

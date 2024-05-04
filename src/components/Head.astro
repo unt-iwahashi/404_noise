@@ -1,5 +1,6 @@
 ---
 import { name, description, url } from '../data/siteData.json';
+import GoogleFonts from '@components/GoogleFonts.astro';
 const ogImg = url + 'ogp.png';
 const twitterImg = url + 'twitter_card.png';
 ---
@@ -8,6 +9,7 @@ const twitterImg = url + 'twitter_card.png';
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
   <meta name="format-detection" content="telephone=no, email=no, address=no" />
+  <meta name="robots" content="noindex nofollow" />
   <title>{name}</title>
   <meta name="description" content={description} />
   <meta property="og:type" content="website" />
@@ -23,5 +25,6 @@ const twitterImg = url + 'twitter_card.png';
   <meta name="twitter:url" content={url} />
   <meta name="twitter:image" content={twitterImg} />
   <link rel="icon" href="/favicon.ico" />
+  <GoogleFonts />
   <meta name="generator" content={Astro.generator} />
 </head>
